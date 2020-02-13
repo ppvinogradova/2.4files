@@ -25,17 +25,11 @@ with open('recipes.txt', encoding='UTF-8') as f:
         l = ing.split(' | ')
         ingredients_dicts = {'ingredient_name':l[0], 'quantity':l[1], 'measure':l[2]}
         ingredients_d_list.append(ingredients_dicts)
-    #pprint(ingredients_d_list)
     for i in index_lst:
         ingredients = ingredients_d_list[0:i]
         ingredients_d_list[0:i] = []
         ingredients_lst.append(ingredients)
-    #pprint(ingredients_lst)
-    q = len(dishes_lst)
-    book = {}
-    cook_book = book.fromkeys(dishes_lst)
-    #for n in range(0, q):
-
+    cook_book = dict(zip(dishes_lst, ingredients_lst))
     pprint(cook_book)
     
             
