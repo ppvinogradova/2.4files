@@ -37,15 +37,22 @@ with open('recipes.txt', encoding='UTF-8') as f:
         ingrs = []
         names = []
         for dish in dishes:
+            n = dishes.count(dish)
             if dish in cook_book.keys():
                 ingr = cook_book.get(dish)
                 for i in ingr:
-                    name = i.pop('ingredient_name')
-                    names.append(name)
                     ingrs.append(i)
+                    try:
+                        name = i.pop('ingredient_name')
+                    except KeyError:
+                        break
+                    else:
+                        names.append(name)         
+        n_names = n*names
+        #print(n_names)      
         a_list = []
-        for name in names:
-            n = names.count(name)
+        for name in n_names:
+            n = n_names.count(name)
             a = n * persons
             a_list.append(a)
         mul_ingrs = []
